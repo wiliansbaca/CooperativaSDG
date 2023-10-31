@@ -1,0 +1,26 @@
+CREATE TABLE Area (
+    AreaID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(255) NOT NULL,
+    Descripcion NVARCHAR(1000)
+);
+
+CREATE TABLE Roles (
+    RolID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(255) NOT NULL,
+    Descripcion NVARCHAR(1000)
+);
+
+CREATE TABLE Categoria (
+    CategoriaID INT PRIMARY KEY IDENTITY(1,1),
+    Nombre NVARCHAR(255) NOT NULL,
+    Descripcion NVARCHAR(1000)
+);
+
+CREATE TABLE NombreDocumento (
+    DocumentoID INT PRIMARY KEY IDENTITY(1,1),
+    Titulo NVARCHAR(255) NOT NULL,
+    Contenido NVARCHAR(MAX),
+    FechaCreacion DATETIME DEFAULT GETDATE(),
+    AreaID INT FOREIGN KEY REFERENCES Area(AreaID),
+    CategoriaID INT FOREIGN KEY REFERENCES Categoria(CategoriaID)
+);
